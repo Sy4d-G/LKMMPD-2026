@@ -1,0 +1,390 @@
+        /* ─── FAQ Neon Glow Hover ─── */
+        .faq-neon {
+            position: relative;
+        }
+        .faq-neon:hover {
+            box-shadow: 0 0 10px rgba(6,79,189,0.3), 0 0 20px rgba(249,211,71,0.2), inset 0 0 10px rgba(6,79,189,0.05);
+            border-color: rgba(6,79,189,0.3) !important;
+            background: linear-gradient(135deg, rgba(6,79,189,0.03) 0%, rgba(249,211,71,0.03) 100%);
+        }
+        .faq-neon:hover summary span:first-child {
+            color: #064fbd;
+            text-shadow: 0 0 8px rgba(6,79,189,0.4), 0 0 16px rgba(249,211,71,0.2);
+        }
+
+        /* ─── Lightning Character Animation (CodePen NQYBpV) ─── */
+        .lightning-chars span {
+            animation: lightning-char-blue 1000ms alternate infinite ease;
+        }
+        .lightning-chars span.text-accent-yellow {
+            color: #f9d347;
+            animation: lightning-char-pass 1000ms alternate infinite ease;
+        }
+        @keyframes lightning-char-blue {
+            0%, 80% {
+                color: rgba(0,0,0,0.85);
+            }
+            90% {
+                color: #064fbd;
+            }
+            100% {
+                color: rgba(0,0,0,0.85);
+            }
+        }
+        @keyframes lightning-char-pass {
+            0%, 80% {
+                color: #f9d347;
+            }
+            90% {
+                color: #fff;
+                text-shadow: 0 0 6px #064fbd;
+            }
+            100% {
+                color: #f9d347;
+                text-shadow: none;
+            }
+        }
+        .lightning-chars span:nth-child(1) { animation-delay: 150ms; }
+        .lightning-chars span:nth-child(2) { animation-delay: 300ms; }
+        .lightning-chars span:nth-child(3) { animation-delay: 450ms; }
+        .lightning-chars span:nth-child(4) { animation-delay: 600ms; }
+        .lightning-chars span:nth-child(5) { animation-delay: 750ms; }
+        .lightning-chars span:nth-child(6) { animation-delay: 900ms; }
+        .lightning-chars span:nth-child(7) { animation-delay: 1050ms; }
+        .lightning-chars span:nth-child(8) { animation-delay: 1200ms; }
+        .lightning-chars span:nth-child(9) { animation-delay: 1350ms; }
+        .lightning-chars span:nth-child(10) { animation-delay: 1500ms; }
+        .lightning-chars span:nth-child(11) { animation-delay: 1650ms; }
+        .lightning-chars span:nth-child(12) { animation-delay: 1800ms; }
+        .lightning-chars span:nth-child(13) { animation-delay: 1950ms; }
+        .lightning-chars span:nth-child(14) { animation-delay: 2100ms; }
+        .lightning-chars span:nth-child(15) { animation-delay: 2250ms; }
+        .lightning-chars span:nth-child(16) { animation-delay: 2400ms; }
+        .lightning-chars span:nth-child(17) { animation-delay: 2550ms; }
+        .lightning-chars span:nth-child(18) { animation-delay: 2700ms; }
+        .lightning-chars span:nth-child(19) { animation-delay: 2850ms; }
+        .lightning-chars span:nth-child(20) { animation-delay: 3000ms; }
+
+        @keyframes scroll-dot {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(15px); opacity: 0; }
+        }
+
+        @keyframes scroll-down-alt {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        @keyframes scroll-up-alt {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        .animate-scroll-down-alt {
+            animation: scroll-down-alt 25s linear infinite;
+        }
+        .animate-scroll-up-alt {
+            animation: scroll-up-alt 25s linear infinite;
+        }
+
+        /* ─── Dokumentasi Mobile Responsive ─── */
+        #dokumentasi {
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            #dokumentasi {
+                min-height: auto !important;
+                padding: 24px 0;
+            }
+
+            #dokumentasi .max-w-container-max {
+                padding: 0;
+            }
+
+            #dokumentasi .flex.w-full {
+                flex-direction: column;
+                height: auto !important;
+                gap: 16px;
+            }
+
+            /* Title */
+            #dokumentasi .w-\[100px\] {
+                width: 100% !important;
+                height: auto !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(6,79,189,0.1);
+                padding-bottom: 12px;
+                margin-bottom: 4px;
+            }
+
+            #dokumentasi .vertical-text-90 {
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                font-size: 1.75rem !important;
+                letter-spacing: 0.1em;
+            }
+
+            /* Kill the desktop grid entirely on mobile */
+            #dokumentasi .flex-grow.grid {
+                display: none !important;
+            }
+        }
+
+        /* ─── Mobile Documentation Rows ─── */
+        @media (max-width: 768px) {
+            /* Row 1 - Scroll Left */
+            .dokumentasi-mobile-row-1 {
+                display: block !important;
+                width: 100%;
+                overflow: hidden;
+                margin-bottom: 16px;
+            }
+
+            .dokumentasi-mobile-row-1 .dokumentasi-mobile-track {
+                display: flex;
+                gap: 10px;
+                width: max-content;
+                animation: scroll-horizontal-left 40s linear infinite;
+            }
+
+            /* Row 2 - Scroll Right */
+            .dokumentasi-mobile-row-2 {
+                display: block !important;
+                width: 100%;
+                overflow: hidden;
+                margin-top: 0;
+                margin-bottom: 16px;
+            }
+
+            .dokumentasi-mobile-row-2 .dokumentasi-mobile-track {
+                display: flex;
+                gap: 10px;
+                width: max-content;
+                animation: scroll-horizontal-right 40s linear infinite;
+            }
+
+            /* Row 3 - Scroll Left (touching edges) */
+            .dokumentasi-mobile-row-3 {
+                display: block !important;
+                width: 100%;
+                overflow: hidden;
+                margin-top: 0;
+                position: relative;
+                z-index: 5;
+            }
+
+            .dokumentasi-mobile-row-3 .dokumentasi-mobile-track {
+                display: flex;
+                gap: 10px;
+                width: max-content;
+                animation: scroll-horizontal-left 40s linear infinite;
+            }
+
+            /* Shared card styles */
+            .dokumentasi-mobile-row-1 .dokumentasi-mobile-card,
+            .dokumentasi-mobile-row-2 .dokumentasi-mobile-card,
+            .dokumentasi-mobile-row-3 .dokumentasi-mobile-card {
+                width: 180px;
+                min-width: 180px;
+                height: 120px;
+                border-radius: 14px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                flex-shrink: 0;
+            }
+
+            .dokumentasi-mobile-row-1 .dokumentasi-mobile-card img,
+            .dokumentasi-mobile-row-2 .dokumentasi-mobile-card img,
+            .dokumentasi-mobile-row-3 .dokumentasi-mobile-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        /* Hide mobile rows on desktop */
+        .dokumentasi-mobile-row-1,
+        .dokumentasi-mobile-row-2,
+        .dokumentasi-mobile-row-3 {
+            display: none;
+        }
+
+        /* Hide about bubbles on desktop */
+        .about-bubbles {
+            display: none;
+        }
+
+        @keyframes scroll-horizontal-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes scroll-horizontal-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ─── About / Get to Know Mobile ─── */
+        @media (max-width: 768px) {
+            #about.section-slant-tech {
+                clip-path: none;
+                margin-top: 0;
+                min-height: 100vh;
+                height: 100vh;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+            }
+
+            #about .max-w-container-max {
+                padding: 0 1.25rem;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            #about .grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+                align-items: center;
+                justify-items: center;
+            }
+
+            #about .space-y-md {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+                align-items: center;
+                order: 1;
+            }
+
+            #about .space-y-md .inline-block {
+                align-self: center;
+                margin-bottom: 0.25rem;
+            }
+
+            #about h2 {
+                font-size: 1.75rem !important;
+                line-height: 1.15;
+                text-align: center;
+                margin-bottom: 0;
+            }
+
+            #about .space-y-md > p {
+                font-size: 0.8rem;
+                line-height: 1.6;
+                text-align: center;
+                max-width: 100%;
+                margin-bottom: 0;
+            }
+
+            #about .grid .grid-cols-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+                width: 100%;
+                text-align: center;
+                padding-top: 0.25rem;
+            }
+
+            #about .grid .grid-cols-3 .space-y-1 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+            }
+
+            #about .grid .grid-cols-3 h4 {
+                font-size: 1.25rem !important;
+                font-weight: 800;
+            }
+
+            #about .grid .grid-cols-3 p {
+                font-size: 0.55rem;
+                letter-spacing: 0.08em;
+            }
+
+            #about .flex.justify-center {
+                order: 2;
+                margin-top: 0;
+            }
+
+            #about .relative.w-full {
+                height: 240px !important;
+                margin-top: 1rem;
+            }
+
+            #about .logo-3d-container {
+                margin-left: 0 !important;
+                margin-top: 130px !important;
+                transform: scale(1.25) !important;
+            }
+
+            #about .absolute.w-64 {
+                width: 120px !important;
+                height: 120px !important;
+            }
+
+            #about .absolute.w-80 {
+                width: 160px !important;
+                height: 160px !important;
+            }
+
+            #about .star-burst {
+                display: block !important;
+                position: absolute !important;
+                top: 0 !important;
+                right: 0 !important;
+                left: auto !important;
+                bottom: auto !important;
+                z-index: 5;
+                width: 30px;
+                height: 30px;
+                animation: starBurst 6s ease-in-out infinite !important;
+            }
+
+            #about .star-burst .star-glow {
+                width: 800%;
+                height: 800%;
+                top: 0;
+                left: 0;
+                transform: none;
+            }
+
+            #about .floating-laptop {
+                display: none !important;
+            }
+
+            #about .floating-gear {
+                display: none !important;
+            }
+
+            /* Yellow Bubbles for Get to Know */
+            #about .about-bubbles {
+                display: block !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 200px;
+                z-index: 1;
+                pointer-events: none;
+                overflow: visible;
+            }
+            #about .about-bubble {
+                position: absolute;
+                border-radius: 50%;
+                background: radial-gradient(circle at 30% 30%, rgba(249,211,71,0.4), rgba(249,211,71,0.15));
+                filter: blur(2px);
+                animation: bubbleFloat 12s ease-in-out infinite;
+            }
+            #about .about-bubble:nth-child(1) { width: 70px; height: 70px; left: 0; top: 10%; animation-delay: 0s; animation-duration: 14s; }
+            #about .about-bubble:nth-child(2) { width: 45px; height: 45px; left: 60px; top: 50%; animation-delay: 2s; animation-duration: 11s; }
+            #about .about-bubble:nth-child(3) { width: 90px; height: 90px; left: 20px; top: 70%; animation-delay: 4s; animation-duration: 16s; }
+            #about .about-bubble:nth-child(4) { width: 30px; height: 30px; left: 120px; top: 20%; animation-delay: 1s; animation-duration: 10s; }
+            #about .about-bubble:nth-child(5) { width: 55px; height: 55px; left: 100px; top: 80%; animation-delay: 3s; animation-duration: 13s; }
+        }
+
