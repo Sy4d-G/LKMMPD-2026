@@ -1,0 +1,547 @@
+        /* ─── 3D Logo System ─── */
+        /* ─── Guide Book Space Mode ─── */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 8px 3px rgba(255,255,255,0.9);
+            animation: star-twinkle 2s ease-in-out infinite;
+            transition: opacity 1.2s ease;
+        }
+        @keyframes star-twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.5); }
+        }
+        .supernova-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 250%;
+            height: 250%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center,
+                rgba(255,255,255,0.6) 0%,
+                rgba(249,211,71,0.35) 10%,
+                rgba(6,79,189,0.25) 25%,
+                rgba(6,79,189,0.08) 40%,
+                transparent 55%);
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        @keyframes supernova-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(0.8); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        #guidebook.book-open .supernova-rays {
+            opacity: 1;
+            animation: supernova-pulse 4s ease-in-out infinite;
+        }
+        #guidebook {
+            transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #guidebook.book-open {
+            background: linear-gradient(180deg, #0a1628 0%, #0f2847 50%, #064fbd 100%) !important;
+        }
+        #guidebook.book-open #space-overlay {
+            opacity: 1;
+        }
+        #guidebook.book-open .guide-text { color: white !important; }
+        #guidebook.book-open .guide-text span { color: #f9d347 !important; }
+        #guidebook.book-open .guide-badge { background: rgba(255,255,255,0.15) !important; border-color: rgba(255,255,255,0.2) !important; }
+        #guidebook.book-open .guide-badge span { color: white !important; }
+        #guidebook.book-open .guide-sub { color: rgba(255,255,255,0.7) !important; }
+        #guidebook.book-open #post-open-ui .bg-accent-yellow { background: white !important; color: #064fbd !important; }
+        #guidebook.book-open #post-open-ui .border-primary { border-color: rgba(255,255,255,0.4) !important; color: white !important; }
+        .logo-3d-container {
+            perspective: 1200px;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* ─── Glass Card 3D System ─── */
+        .glass-card-3d {
+            width: 175px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 
+                0 8px 32px rgba(6, 79, 189, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(255,255,255,0.05);
+            transform-style: preserve-3d;
+            perspective: 800px;
+            opacity: 0;
+            position: relative;
+        }
+        .glass-card-3d.glitching {
+            opacity: 1;
+        }
+        .glass-card-3d.revealed {
+            opacity: 1;
+        }
+
+        .gc-1 { transform: rotateY(12deg) rotateX(-5deg) translateZ(0); }
+        .gc-2 { transform: rotateY(-8deg) rotateX(4deg) translateZ(0); }
+        .gc-3 { transform: rotateY(15deg) rotateX(-3deg) translateZ(0); }
+        .gc-4 { transform: rotateY(-10deg) rotateX(6deg) translateZ(0); }
+
+        .glass-card-3d.glitching.gc-1 { animation: glitch-3d-1 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        .glass-card-3d.glitching.gc-2 { animation: glitch-3d-2 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s forwards; }
+        .glass-card-3d.glitching.gc-3 { animation: glitch-3d-3 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards; }
+        .glass-card-3d.glitching.gc-4 { animation: glitch-3d-4 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.05s forwards; }
+
+        @keyframes glitch-3d-1 {
+            0%   { opacity: 1; transform: rotateY(12deg) rotateX(-5deg) translateZ(0); filter: hue-rotate(0deg); }
+            5%   { opacity: 1; transform: rotateY(12deg) rotateX(-5deg) translate(-8px, 2px) skewX(-5deg); filter: hue-rotate(90deg) brightness(1.3); }
+            10%  { transform: rotateY(12deg) rotateX(-5deg) translate(10px, -3px) skewX(8deg); filter: hue-rotate(180deg) brightness(0.8); }
+            15%  { transform: rotateY(12deg) rotateX(-5deg) translate(-6px, 1px) skewX(-3deg); filter: hue-rotate(270deg) brightness(1.5); }
+            20%  { transform: rotateY(12deg) rotateX(-5deg) translate(12px, -2px) skewX(6deg); filter: hue-rotate(45deg) brightness(1.2); }
+            30%  { transform: rotateY(12deg) rotateX(-5deg) translate(8px, -1px) skewX(4deg); filter: hue-rotate(225deg) brightness(1.4); }
+            40%  { transform: rotateY(12deg) rotateX(-5deg) translate(5px, 2px) skewX(3deg); filter: hue-rotate(60deg) brightness(1.1); }
+            50%  { transform: rotateY(12deg) rotateX(-5deg) translate(-2px, -1px) skewX(-1deg); filter: hue-rotate(120deg) brightness(1.2); }
+            60%  { transform: rotateY(12deg) rotateX(-5deg) translate(3px, 1px) skewX(1deg); filter: hue-rotate(180deg); }
+            70%  { transform: rotateY(12deg) rotateX(-5deg) translate(-1px, 0); filter: hue-rotate(90deg); }
+            80%  { transform: rotateY(12deg) rotateX(-5deg) translate(1px, 0); filter: hue-rotate(45deg); }
+            90%  { transform: rotateY(12deg) rotateX(-5deg) translateZ(0); filter: hue-rotate(0deg); }
+            100% { opacity: 1; transform: rotateY(12deg) rotateX(-5deg) translateZ(0); filter: hue-rotate(0deg); }
+        }
+        @keyframes glitch-3d-2 {
+            0%   { opacity: 1; transform: rotateY(-8deg) rotateX(4deg) translateZ(0); filter: hue-rotate(0deg); }
+            5%   { opacity: 1; transform: rotateY(-8deg) rotateX(4deg) translate(-8px, 2px) skewX(-5deg); filter: hue-rotate(90deg) brightness(1.3); }
+            10%  { transform: rotateY(-8deg) rotateX(4deg) translate(10px, -3px) skewX(8deg); filter: hue-rotate(180deg) brightness(0.8); }
+            15%  { transform: rotateY(-8deg) rotateX(4deg) translate(-6px, 1px) skewX(-3deg); filter: hue-rotate(270deg) brightness(1.5); }
+            20%  { transform: rotateY(-8deg) rotateX(4deg) translate(12px, -2px) skewX(6deg); filter: hue-rotate(45deg) brightness(1.2); }
+            30%  { transform: rotateY(-8deg) rotateX(4deg) translate(8px, -1px) skewX(4deg); filter: hue-rotate(225deg) brightness(1.4); }
+            40%  { transform: rotateY(-8deg) rotateX(4deg) translate(5px, 2px) skewX(3deg); filter: hue-rotate(60deg) brightness(1.1); }
+            50%  { transform: rotateY(-8deg) rotateX(4deg) translate(-2px, -1px) skewX(-1deg); filter: hue-rotate(120deg) brightness(1.2); }
+            60%  { transform: rotateY(-8deg) rotateX(4deg) translate(3px, 1px) skewX(1deg); filter: hue-rotate(180deg); }
+            70%  { transform: rotateY(-8deg) rotateX(4deg) translate(-1px, 0); filter: hue-rotate(90deg); }
+            80%  { transform: rotateY(-8deg) rotateX(4deg) translate(1px, 0); filter: hue-rotate(45deg); }
+            90%  { transform: rotateY(-8deg) rotateX(4deg) translateZ(0); filter: hue-rotate(0deg); }
+            100% { opacity: 1; transform: rotateY(-8deg) rotateX(4deg) translateZ(0); filter: hue-rotate(0deg); }
+        }
+        @keyframes glitch-3d-3 {
+            0%   { opacity: 1; transform: rotateY(15deg) rotateX(-3deg) translateZ(0); filter: hue-rotate(0deg); }
+            5%   { opacity: 1; transform: rotateY(15deg) rotateX(-3deg) translate(-8px, 2px) skewX(-5deg); filter: hue-rotate(90deg) brightness(1.3); }
+            10%  { transform: rotateY(15deg) rotateX(-3deg) translate(10px, -3px) skewX(8deg); filter: hue-rotate(180deg) brightness(0.8); }
+            15%  { transform: rotateY(15deg) rotateX(-3deg) translate(-6px, 1px) skewX(-3deg); filter: hue-rotate(270deg) brightness(1.5); }
+            20%  { transform: rotateY(15deg) rotateX(-3deg) translate(12px, -2px) skewX(6deg); filter: hue-rotate(45deg) brightness(1.2); }
+            30%  { transform: rotateY(15deg) rotateX(-3deg) translate(8px, -1px) skewX(4deg); filter: hue-rotate(225deg) brightness(1.4); }
+            40%  { transform: rotateY(15deg) rotateX(-3deg) translate(5px, 2px) skewX(3deg); filter: hue-rotate(60deg) brightness(1.1); }
+            50%  { transform: rotateY(15deg) rotateX(-3deg) translate(-2px, -1px) skewX(-1deg); filter: hue-rotate(120deg) brightness(1.2); }
+            60%  { transform: rotateY(15deg) rotateX(-3deg) translate(3px, 1px) skewX(1deg); filter: hue-rotate(180deg); }
+            70%  { transform: rotateY(15deg) rotateX(-3deg) translate(-1px, 0); filter: hue-rotate(90deg); }
+            80%  { transform: rotateY(15deg) rotateX(-3deg) translate(1px, 0); filter: hue-rotate(45deg); }
+            90%  { transform: rotateY(15deg) rotateX(-3deg) translateZ(0); filter: hue-rotate(0deg); }
+            100% { opacity: 1; transform: rotateY(15deg) rotateX(-3deg) translateZ(0); filter: hue-rotate(0deg); }
+        }
+        @keyframes glitch-3d-4 {
+            0%   { opacity: 1; transform: rotateY(-10deg) rotateX(6deg) translateZ(0); filter: hue-rotate(0deg); }
+            5%   { opacity: 1; transform: rotateY(-10deg) rotateX(6deg) translate(-8px, 2px) skewX(-5deg); filter: hue-rotate(90deg) brightness(1.3); }
+            10%  { transform: rotateY(-10deg) rotateX(6deg) translate(10px, -3px) skewX(8deg); filter: hue-rotate(180deg) brightness(0.8); }
+            15%  { transform: rotateY(-10deg) rotateX(6deg) translate(-6px, 1px) skewX(-3deg); filter: hue-rotate(270deg) brightness(1.5); }
+            20%  { transform: rotateY(-10deg) rotateX(6deg) translate(12px, -2px) skewX(6deg); filter: hue-rotate(45deg) brightness(1.2); }
+            30%  { transform: rotateY(-10deg) rotateX(6deg) translate(8px, -1px) skewX(4deg); filter: hue-rotate(225deg) brightness(1.4); }
+            40%  { transform: rotateY(-10deg) rotateX(6deg) translate(5px, 2px) skewX(3deg); filter: hue-rotate(60deg) brightness(1.1); }
+            50%  { transform: rotateY(-10deg) rotateX(6deg) translate(-2px, -1px) skewX(-1deg); filter: hue-rotate(120deg) brightness(1.2); }
+            60%  { transform: rotateY(-10deg) rotateX(6deg) translate(3px, 1px) skewX(1deg); filter: hue-rotate(180deg); }
+            70%  { transform: rotateY(-10deg) rotateX(6deg) translate(-1px, 0); filter: hue-rotate(90deg); }
+            80%  { transform: rotateY(-10deg) rotateX(6deg) translate(1px, 0); filter: hue-rotate(45deg); }
+            90%  { transform: rotateY(-10deg) rotateX(6deg) translateZ(0); filter: hue-rotate(0deg); }
+            100% { opacity: 1; transform: rotateY(-10deg) rotateX(6deg) translateZ(0); filter: hue-rotate(0deg); }
+        }
+
+        .glass-card-3d.revealed.gc-1 { animation: card-float-1 5s ease-in-out infinite; }
+        .glass-card-3d.revealed.gc-2 { animation: card-float-2 6s ease-in-out infinite 0.3s; }
+        .glass-card-3d.revealed.gc-3 { animation: card-float-3 5.5s ease-in-out infinite 0.6s; }
+        .glass-card-3d.revealed.gc-4 { animation: card-float-4 6.5s ease-in-out infinite 0.9s; }
+
+        @keyframes card-float-1 {
+            0%, 100% { transform: rotateY(12deg) rotateX(-5deg) translateY(0) translateZ(10px); }
+            50% { transform: rotateY(14deg) rotateX(-3deg) translateY(-16px) translateZ(20px); }
+        }
+        @keyframes card-float-2 {
+            0%, 100% { transform: rotateY(-8deg) rotateX(4deg) translateY(0) translateZ(5px); }
+            50% { transform: rotateY(-10deg) rotateX(2deg) translateY(-20px) translateZ(15px); }
+        }
+        @keyframes card-float-3 {
+            0%, 100% { transform: rotateY(15deg) rotateX(-3deg) translateY(0) translateZ(8px); }
+            50% { transform: rotateY(13deg) rotateX(-5deg) translateY(-12px) translateZ(18px); }
+        }
+        @keyframes card-float-4 {
+            0%, 100% { transform: rotateY(-10deg) rotateX(6deg) translateY(0) translateZ(12px); }
+            50% { transform: rotateY(-12deg) rotateX(4deg) translateY(-18px) translateZ(22px); }
+        }
+
+        .glass-card-3d::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .glass-card-3d .text-xs {
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+        .glass-card-3d .text-\[10px\] {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .glass-card-3d .h-1 {
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        /* ─── Per-Card Glitch Animation (Dramatic) ─── */
+        .glass-card-3d {
+            position: relative;
+        }
+        .glass-card-3d::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .glass-card-3d.glitching::before {
+            animation: glitch-flash 1.4s ease-out forwards;
+        }
+        @keyframes glitch-flash {
+            0% { opacity: 0; background: transparent; }
+            5% { opacity: 1; background: rgba(6,79,189,0.4); }
+            10% { opacity: 0; }
+            15% { opacity: 1; background: rgba(249,211,71,0.3); }
+            20% { opacity: 0; }
+            30% { opacity: 1; background: rgba(6,79,189,0.2); }
+            35% { opacity: 0; }
+            50% { opacity: 1; background: rgba(249,211,71,0.15); }
+            55% { opacity: 0; }
+            70% { opacity: 0.5; background: rgba(6,79,189,0.1); }
+            100% { opacity: 0; }
+        }
+
+        .glass-card-3d.glitching .glitch-scanline {
+            animation: scanline-dramatic 1.4s linear forwards;
+        }
+        .glitch-scanline {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #064fbd 20%, #f9d347 50%, #064fbd 80%, transparent 100%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 55;
+            box-shadow: 0 0 8px rgba(6,79,189,0.8), 0 0 16px rgba(249,211,71,0.5);
+        }
+        @keyframes scanline-dramatic {
+            0%   { top: -5%; opacity: 0; }
+            5%   { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { top: 105%; opacity: 0; }
+        }
+
+        .glass-card-3d.glitching .glitch-text-r,
+        .glass-card-3d.glitching .glitch-text-b {
+            animation: text-glitch-dramatic 1.4s steps(2) forwards;
+        }
+        .glitch-text-r, .glitch-text-b {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            opacity: 0;
+            pointer-events: none;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .glitch-text-r { color: #064fbd; mix-blend-mode: multiply; }
+        .glitch-text-b { color: #f9d347; mix-blend-mode: screen; }
+        @keyframes text-glitch-dramatic {
+            0%   { opacity: 0; clip-path: inset(0 0 100% 0); }
+            5%   { opacity: 0.8; clip-path: inset(10% 0 70% 0); transform: translateX(-5px); }
+            10%  { opacity: 0; clip-path: inset(0 0 100% 0); }
+            15%  { opacity: 0.6; clip-path: inset(40% 0 20% 0); transform: translateX(5px); }
+            20%  { opacity: 0; clip-path: inset(0 0 100% 0); }
+            25%  { opacity: 0.7; clip-path: inset(60% 0 10% 0); transform: translateX(-3px); }
+            30%  { opacity: 0; clip-path: inset(0 0 100% 0); }
+            35%  { opacity: 0.5; clip-path: inset(20% 0 50% 0); transform: translateX(4px); }
+            40%  { opacity: 0; clip-path: inset(0 0 100% 0); }
+            50%  { opacity: 0.4; clip-path: inset(80% 0 5% 0); transform: translateX(-2px); }
+            60%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .glass-card-3d.glitching .glitch-bars {
+            animation: glitch-bars-dramatic 1.4s steps(3) forwards;
+        }
+        .glitch-bars {
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 45;
+        }
+        .glitch-bars span {
+            position: absolute;
+            width: 100%;
+            background: rgba(6,79,189,0.3);
+        }
+        .glitch-bars span:nth-child(1) { height: 3px; top: 15%; }
+        .glitch-bars span:nth-child(2) { height: 2px; top: 35%; }
+        .glitch-bars span:nth-child(3) { height: 4px; top: 55%; }
+        .glitch-bars span:nth-child(4) { height: 2px; top: 75%; }
+        .glitch-bars span:nth-child(5) { height: 3px; top: 90%; }
+        @keyframes glitch-bars-dramatic {
+            0%   { opacity: 0; }
+            5%   { opacity: 1; transform: translateX(-10px); }
+            10%  { transform: translateX(8px); }
+            15%  { opacity: 0.5; transform: translateX(-6px); }
+            20%  { opacity: 1; transform: translateX(10px); }
+            25%  { transform: translateX(-4px); }
+            30%  { opacity: 0.3; transform: translateX(6px); }
+            35%  { opacity: 0.8; transform: translateX(-3px); }
+            40%  { transform: translateX(4px); }
+            50%  { opacity: 0.4; transform: translateX(-2px); }
+            60%  { opacity: 0.2; transform: translateX(1px); }
+            70%  { opacity: 0; transform: translateX(0); }
+            100% { opacity: 0; }
+        }
+
+        .logo-3d-float {
+            animation: logo-levitate 5s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        .logo-3d-coin {
+            width: 320px;
+            height: 320px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: logo-rotate-y 8s linear infinite;
+            box-shadow: 
+                0 0 0 10px rgba(6, 79, 189, 0.05),
+                0 30px 70px rgba(6, 79, 189, 0.2);
+        }
+
+        /* Edge of the coin for thickness */
+        .logo-3d-coin::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: #e0e7ff;
+            transform: translateZ(-8px);
+            border: 6px solid #064fbd;
+        }
+
+        .logo-3d-coin img.coin-front {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 20px;
+            background: white;
+            backface-visibility: hidden;
+            transform: translateZ(8px);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .logo-3d-coin img.coin-back {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 20px;
+            background: white;
+            backface-visibility: hidden;
+            transform: rotateY(180deg) translateZ(8px);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        /* Floating Laptop positioning */
+        .floating-laptop {
+            position: absolute;
+            top: -20px;
+            right: -60px;
+            animation: floatLaptop 3s ease-in-out infinite;
+            z-index: 10;
+            filter: drop-shadow(0 8px 20px rgba(6, 79, 189, 0.2));
+        }
+        @keyframes floatLaptop {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-12px) rotate(0deg); }
+        }
+
+        /* Floating Gear positioning */
+        .floating-gear {
+            position: absolute;
+            bottom: -10px;
+            left: -50px;
+            animation: floatGear 4s ease-in-out infinite;
+            z-index: 10;
+            filter: drop-shadow(0 8px 20px rgba(6, 79, 189, 0.3)) saturate(1.4) contrast(1.1);
+        }
+        .floating-gear #gear-lottie {
+            animation: gearSpin 6s linear infinite;
+            width: 100px;
+            height: 100px;
+        }
+        @keyframes floatGear {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+
+        @keyframes logo-levitate {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-35px) rotateX(-5deg); }
+        }
+
+        @keyframes logo-rotate-y {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* ─── Guidebook Mobile Responsive ─── */
+        @media (max-width: 768px) {
+            #guidebook {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            #guidebook .max-w-container-max {
+                padding: 0 1rem;
+                text-align: center;
+            }
+
+            #guidebook .mb-lg {
+                margin-bottom: 1rem;
+            }
+
+            #guidebook .flex.flex-col.items-center {
+                height: auto !important;
+                min-height: 500px;
+                gap: 1.5rem !important;
+                align-items: center !important;
+            }
+
+            #guidebook #book-container {
+                width: 100%;
+                max-width: 340px;
+                height: 420px;
+                margin: 0 auto;
+            }
+
+            #guidebook .flex.items-center.justify-center.gap-4 {
+                flex-direction: row;
+                gap: 0.75rem !important;
+                margin-top: 0.5rem;
+            }
+
+            #guidebook button {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.8rem;
+            }
+
+            .logo-3d-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .logo-3d-coin {
+                width: 200px;
+                height: 200px;
+            }
+
+            .floating-laptop {
+                top: -10px;
+                right: -30px;
+                transform: scale(0.6);
+            }
+
+            .floating-gear {
+                bottom: -5px;
+                left: -25px;
+                transform: scale(0.5);
+            }
+
+            .floating-gear #gear-lottie {
+                width: 60px;
+                height: 60px;
+            }
+
+            .glass-card-3d {
+                width: 140px;
+                padding: 12px;
+            }
+
+            .gc-1 { top: -60px !important; left: 10px !important; }
+            .gc-2 { top: -70px !important; left: 200px !important; }
+            .gc-3 { bottom: 20px !important; left: 10px !important; }
+            .gc-4 { bottom: 10px !important; left: 200px !important; }
+        }
+
+        @media (max-width: 480px) {
+            #guidebook {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            #guidebook .flex.flex-col.items-center {
+                min-height: 450px;
+            }
+
+            #guidebook #book-container {
+                max-width: 300px;
+                height: 380px;
+            }
+
+            .logo-3d-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .logo-3d-coin {
+                width: 150px;
+                height: 150px;
+            }
+
+            .floating-laptop {
+                transform: scale(0.4);
+                right: -20px;
+            }
+
+            .floating-gear {
+                transform: scale(0.35);
+                left: -15px;
+            }
+
+            .glass-card-3d {
+                width: 120px;
+                padding: 10px;
+            }
+
+            .gc-1 { top: -50px !important; left: 5px !important; }
+            .gc-2 { top: -60px !important; left: 150px !important; }
+            .gc-3 { bottom: 30px !important; left: 5px !important; }
+            .gc-4 { bottom: 20px !important; left: 150px !important; }
+        }
+
