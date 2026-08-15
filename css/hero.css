@@ -521,7 +521,7 @@
 @media (min-width: 1024px) and (max-width: 1366px) {
     header.hero-mask-bottom {
         min-height: 750px !important;
-        padding-top: 80px !important;
+        padding-top: 100px !important;
         padding-bottom: 40px !important;
     }
     header.hero-mask-bottom > .max-w-container-max {
@@ -532,18 +532,19 @@
     #glass-cards-area {
         width: 100% !important;
         max-width: 610px !important;
+        margin-top: 20px !important;
     }
     .glass-card-3d.gc-1,
     .glass-card-3d.gc-2 {
-        top: -30px !important;
+        top: 0px !important;
     }
     .glass-card-3d.gc-3,
     .glass-card-3d.gc-4 {
-        bottom: -10px !important;
+        bottom: 20px !important;
     }
     .glass-card-3d.gc-2,
     .glass-card-3d.gc-4 {
-        left: 600px !important;
+        left: 610px !important;
     }
 }
 

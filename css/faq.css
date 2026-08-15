@@ -412,3 +412,10 @@
             #about .about-bubble:nth-child(5) { width: 55px; height: 55px; left: 100px; top: 80%; animation-delay: 3s; animation-duration: 13s; }
         }
 
+@media (min-width: 1024px) and (max-width: 1366px) {
+    #faq, #about, #dokumentasi, #guidebook, #benefits, #speakers, #aftermovie {
+        padding-left: 36px !important;
+        padding-right: 36px !important;
+    }
+}
+
