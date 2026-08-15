@@ -531,19 +531,19 @@
     }
     #glass-cards-area {
         width: 100% !important;
-        max-width: 630px !important;
+        max-width: 610px !important;
     }
     .glass-card-3d.gc-1,
     .glass-card-3d.gc-2 {
-        top: -60px !important;
+        top: -30px !important;
     }
     .glass-card-3d.gc-3,
     .glass-card-3d.gc-4 {
-        bottom: -30px !important;
+        bottom: -10px !important;
     }
     .glass-card-3d.gc-2,
     .glass-card-3d.gc-4 {
-        left: 575px !important;
+        left: 600px !important;
     }
 }
 
