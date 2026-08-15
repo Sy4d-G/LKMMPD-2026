@@ -81,8 +81,9 @@
 /* ─── CIRCUIT CANVAS ─── */
 .circuit-board {
     position: relative;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     height: 580px;
     z-index: 1;
 }
