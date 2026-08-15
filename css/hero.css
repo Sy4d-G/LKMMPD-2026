@@ -520,23 +520,24 @@
 
 @media (min-width: 1024px) and (max-width: 1366px) {
     header.hero-mask-bottom {
-        min-height: 720px !important;
+        min-height: 750px !important;
         padding-top: 80px !important;
         padding-bottom: 40px !important;
     }
     header.hero-mask-bottom > .max-w-container-max {
-        max-width: 1100px !important;
-        padding-left: 24px !important;
-        padding-right: 24px !important;
+        max-width: 1180px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
     #glass-cards-area {
-        width: 500px !important;
+        width: 100% !important;
+        max-width: 650px !important;
     }
     .glass-card-3d.gc-2 {
-        left: 420px !important;
+        left: 550px !important;
     }
     .glass-card-3d.gc-4 {
-        left: 420px !important;
+        left: 550px !important;
     }
 }
 
