@@ -1124,27 +1124,23 @@
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        <!-- PDF Viewer Container using PDF.js or direct fallback viewer -->
-        <div class="flex-grow w-full h-full bg-slate-900 relative flex flex-col items-center justify-center p-6 text-center">
-            <div id="pdf-fallback-view" class="max-w-md mx-auto space-y-4">
-                <div class="w-16 h-16 bg-accent-yellow/20 rounded-2xl flex items-center justify-center mx-auto text-accent-yellow">
-                    <span class="material-symbols-outlined text-3xl">menu_book</span>
-                </div>
-                <h4 class="text-white font-bold text-xl">Buku Panduan LKMMPD 2026</h4>
-                <p class="text-slate-300 text-sm">Anda dapat membaca langsung atau mengunduh dokumen panduan lengkap untuk informasi detail acara.</p>
-                <div class="flex items-center justify-center gap-3 pt-2">
-                    <a id="pdf-download-btn" href="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf" download class="bg-accent-yellow text-primary px-6 py-3 rounded-xl text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
-                        <span class="material-symbols-outlined text-lg">download</span> Download PDF Guidebook
-                    </a>
-                    <a href="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf" target="_blank" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl text-sm font-bold transition-colors flex items-center gap-2">
-                        <span class="material-symbols-outlined text-lg">visibility</span> Buka Tab Baru
-                    </a>
+        <!-- PDF Viewer Container using native iframe with browser PDF viewer plugin + fallback -->
+        <div class="flex-grow w-full h-full bg-slate-900 relative flex flex-col items-center justify-center overflow-hidden">
+            <iframe id="pdf-iframe" src="" class="w-full h-full border-0 bg-white" title="Guidebook PDF"></iframe>
+            <div id="pdf-fallback-view" class="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center p-6 text-center hidden">
+                <div class="max-w-md mx-auto space-y-4">
+                    <div class="w-16 h-16 bg-accent-yellow/20 rounded-2xl flex items-center justify-center mx-auto text-accent-yellow">
+                        <span class="material-symbols-outlined text-3xl">menu_book</span>
+                    </div>
+                    <h4 class="text-white font-bold text-xl">Buku Panduan LKMMPD 2026</h4>
+                    <p class="text-slate-300 text-sm">Browser Anda memblokir embedded PDF viewer. Silakan unduh atau buka langsung.</p>
+                    <div class="flex items-center justify-center gap-3 pt-2">
+                        <a id="pdf-download-btn" href="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf" download class="bg-accent-yellow text-primary px-6 py-3 rounded-xl text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
+                            <span class="material-symbols-outlined text-lg">download</span> Download PDF
+                        </a>
+                    </div>
                 </div>
             </div>
-            <!-- Hidden object/iframe as background loader or fallback -->
-            <object data="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf" type="application/pdf" class="absolute inset-0 w-full h-full opacity-0 pointer-events-none">
-                <iframe src="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf" class="w-full h-full"></iframe>
-            </object>
         </div>
         <!-- Modal Footer / Controls -->
         <div class="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-200">
@@ -1164,6 +1160,17 @@
 <script>
 function openPdfModal() {
     const modal = document.getElementById('pdf-modal');
+    const iframe = document.getElementById('pdf-iframe');
+    const fallback = document.getElementById('pdf-fallback-view');
+    const pdfUrl = 'assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf#view=FitH&toolbar=1';
+    
+    if (iframe) {
+        iframe.src = pdfUrl;
+        iframe.onerror = function() {
+            if (fallback) fallback.classList.remove('hidden');
+        };
+    }
+    
     modal.classList.remove('hidden');
     setTimeout(() => {
         modal.classList.remove('opacity-0');
