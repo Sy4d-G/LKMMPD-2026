@@ -540,7 +540,7 @@
     }
     .glass-card-3d.gc-3,
     .glass-card-3d.gc-4 {
-        bottom: 20px !important;
+        bottom: -5px !important;
     }
     .glass-card-3d.gc-2,
     .glass-card-3d.gc-4 {
