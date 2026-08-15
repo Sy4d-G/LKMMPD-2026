@@ -1124,23 +1124,9 @@
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        <!-- PDF Viewer Container using native iframe with browser PDF viewer plugin + fallback -->
+        <!-- PDF Viewer Container using custom embedded PDF.js reader -->
         <div class="flex-grow w-full h-full bg-slate-900 relative flex flex-col items-center justify-center overflow-hidden">
-            <iframe id="pdf-iframe" src="" class="w-full h-full border-0 bg-white" title="Guidebook PDF"></iframe>
-            <div id="pdf-fallback-view" class="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center p-6 text-center hidden">
-                <div class="max-w-md mx-auto space-y-4">
-                    <div class="w-16 h-16 bg-accent-yellow/20 rounded-2xl flex items-center justify-center mx-auto text-accent-yellow">
-                        <span class="material-symbols-outlined text-3xl">menu_book</span>
-                    </div>
-                    <h4 class="text-white font-bold text-xl">Buku Panduan LKMMPD 2026</h4>
-                    <p class="text-slate-300 text-sm">Browser Anda memblokir embedded PDF viewer. Silakan unduh atau buka langsung.</p>
-                    <div class="flex items-center justify-center gap-3 pt-2">
-                        <a id="pdf-download-btn" href="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf" download class="bg-accent-yellow text-primary px-6 py-3 rounded-xl text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
-                            <span class="material-symbols-outlined text-lg">download</span> Download PDF
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <iframe id="pdf-iframe" src="pdfjs/viewer.html" class="w-full h-full border-0 bg-slate-900" title="Guidebook PDF"></iframe>
         </div>
         <!-- Modal Footer / Controls -->
         <div class="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-200">
@@ -1161,16 +1147,9 @@
 function openPdfModal() {
     const modal = document.getElementById('pdf-modal');
     const iframe = document.getElementById('pdf-iframe');
-    const fallback = document.getElementById('pdf-fallback-view');
-    const pdfUrl = 'assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf#view=FitH&toolbar=1';
-    
-    if (iframe) {
-        iframe.src = pdfUrl;
-        iframe.onerror = function() {
-            if (fallback) fallback.classList.remove('hidden');
-        };
+    if (iframe && !iframe.src.includes('pdfjs/viewer.html')) {
+        iframe.src = 'pdfjs/viewer.html';
     }
-    
     modal.classList.remove('hidden');
     setTimeout(() => {
         modal.classList.remove('opacity-0');

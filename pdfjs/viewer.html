@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Viewer</title>
+    <link rel="stylesheet" href="pdf_viewer.css">
+    <style>
+        body { margin: 0; background: #0f172a; color: white; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        #toolbar { padding: 10px 20px; background: #1e293b; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+        #viewerContainer { overflow: auto; position: relative; flex-grow: 1; display: flex; justify-content: center; padding: 20px; }
+        .btn { background: #f9d347; color: #064fbd; border: none; padding: 6px 14px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div id="toolbar">
+        <div>
+            <span>Halaman: <span id="page_num">1</span> / <span id="page_count">1</span></span>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn" id="prev">Sebelumnya</button>
+            <button class="btn" id="next">Selanjutnya</button>
+            <button class="btn" id="zoom_in">Zoom +</button>
+            <button class="btn" id="zoom_out">Zoom -</button>
+        </div>
+    </div>
+    <div id="viewerContainer">
+        <div id="viewer" class="pdfViewer"></div>
+    </div>
+
+    <script src="pdf.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
+
+        var url = '../assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf';
+        var pdfDoc = null,
+            pageNum = 1,
+            pageRendering = false,
+            pageNumPending = null,
+            scale = 1.2,
+            canvas = document.createElement('canvas'),
+            ctx = canvas.getContext('2d');
+
+        // Render PDF using custom canvas rendering for absolute stability on Vercel
+        const container = document.getElementById('viewerContainer');
+        const viewer = document.getElementById('viewer');
+
+        function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(function(page) {
+                var viewport = page.getViewport({scale: scale});
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                canvas.style.display = 'block';
+                canvas.style.margin = '10px auto';
+                canvas.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
+                canvas.style.borderRadius = '8px';
+
+                viewer.innerHTML = '';
+                viewer.appendChild(canvas);
+
+                var renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                var renderTask = page.render(renderContext);
+
+                renderTask.promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            });
+
+            document.getElementById('page_num').textContent = num;
+        }
+
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        function onPrevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        }
+        document.getElementById('prev').addEventListener('click', onPrevPage);
+
+        function onNextPage() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        }
+        document.getElementById('next').addEventListener('click', onNextPage);
+
+        document.getElementById('zoom_in').addEventListener('click', function() {
+            scale += 0.2;
+            queueRenderPage(pageNum);
+        });
+
+        document.getElementById('zoom_out').addEventListener('click', function() {
+            if (scale <= 0.6) return;
+            scale -= 0.2;
+            queueRenderPage(pageNum);
+        });
+
+        pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+            pdfDoc = pdfDoc_;
+            document.getElementById('page_count').textContent = pdfDoc.numPages;
+            renderPage(pageNum);
+        });
+    </script>
+</body>
+</html>
