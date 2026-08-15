@@ -1126,7 +1126,11 @@
         </div>
         <!-- PDF Viewer Container using embed / iframe with direct src -->
         <div class="flex-grow w-full h-full bg-slate-100 relative">
-            <iframe id="pdf-iframe" src="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf#view=FitH" class="w-full h-full border-0"></iframe>
+            <object data="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf#view=FitH" type="application/pdf" class="w-full h-full border-0">
+                <iframe src="assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf#view=FitH" class="w-full h-full border-0">
+                    <p>Browser Anda tidak mendukung preview PDF langsung. Silakan download file melalui tombol di bawah.</p>
+                </iframe>
+            </object>
         </div>
         <!-- Modal Footer / Controls -->
         <div class="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-200">
@@ -1150,6 +1154,11 @@ function openPdfModal() {
     const pdfUrl = 'assets/pdf/GUIDEBOOK LKMMPD_20260814_174027_0000.pdf#view=FitH&toolbar=1';
     if (iframe) {
         iframe.src = pdfUrl;
+    }
+    // Also update object data if present
+    const obj = document.querySelector('#pdf-modal object');
+    if (obj) {
+        obj.data = pdfUrl;
     }
     modal.classList.remove('hidden');
     setTimeout(() => {
