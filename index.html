@@ -927,8 +927,8 @@
             <span class="am-topbar-title">LKMMPD 2026 After Movie</span>
         </div>
 
-        <div class="am-video-container">
-            <div class="am-video-inner" style="background-image: url('assets/images/aftermovie-thumb.webp'); background-size: cover; background-position: center;">
+        <div class="am-video-container" id="am-video-wrapper">
+            <div class="am-video-inner" id="am-video-thumb" style="background-image: url('assets/images/aftermovie-thumb.webp'); background-size: cover; background-position: center; cursor: pointer;" onclick="playAfterMovie()">
                 <div class="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
                 <div class="relative z-10 flex flex-col items-center justify-center">
                     <div class="am-play-btn">
@@ -941,7 +941,7 @@
 
         <div class="am-controls">
             <div class="am-controls-left">
-                <button class="am-ctrl-btn"><span class="material-symbols-outlined">play_arrow</span></button>
+                <button class="am-ctrl-btn" onclick="playAfterMovie()"><span class="material-symbols-outlined">play_arrow</span></button>
                 <button class="am-ctrl-btn"><span class="material-symbols-outlined">volume_up</span></button>
             </div>
             <div class="am-progress-wrap">
@@ -1174,6 +1174,17 @@ function closePdfModal() {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closePdfModal();
 });
+
+function playAfterMovie() {
+    const wrapper = document.getElementById('am-video-wrapper');
+    if (wrapper) {
+        wrapper.innerHTML = `
+            <div class="w-full h-full relative" style="padding-bottom: 56.25%; height: 0;">
+                <iframe src="https://www.youtube-nocookie.com/embed/5X1qmWy0jCo?autoplay=1&enablejsapi=1&rel=0&modestbranding=1" title="LKMMPD 2026 After Movie" class="absolute top-0 left-0 w-full h-full border-0 rounded-2xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        `;
+    }
+}
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
