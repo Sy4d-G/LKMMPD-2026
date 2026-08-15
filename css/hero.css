@@ -536,7 +536,7 @@
     }
     .glass-card-3d.gc-1,
     .glass-card-3d.gc-2 {
-        top: 0px !important;
+        top: -25px !important;
     }
     .glass-card-3d.gc-3,
     .glass-card-3d.gc-4 {
