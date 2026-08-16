@@ -417,5 +417,17 @@
         padding-left: 36px !important;
         padding-right: 36px !important;
     }
+    #about .logo-3d-container {
+        margin-left: 60px !important;
+        transform: scale(0.95) !important;
+    }
+    #about .absolute.w-64 {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    #about .absolute.w-80 {
+        width: 220px !important;
+        height: 220px !important;
+    }
 }
 
