@@ -498,3 +498,36 @@
         display: none !important;
     }
 }
+
+
+/* ─── Tablet Responsive (iPad, iPad Air, iPad Pro 769px - 1024px) ─── */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .obs-section {
+        min-height: auto !important;
+        padding: 60px 0 !important;
+        overflow: hidden !important;
+    }
+    .obs-container {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px !important;
+        padding: 40px 20px !important;
+        max-width: 100% !important;
+    }
+    .obs-mascot-area {
+        margin-left: 0 !important;
+    }
+    .obs-holo-frame {
+        width: 300px !important;
+        height: 350px !important;
+    }
+    .obs-chat-area {
+        padding-left: 0 !important;
+        justify-content: center !important;
+    }
+    .obs-chat-bubble {
+        max-width: 340px !important;
+    }
+    .obs-beam, .obs-beam-source {
+        opacity: 0.4 !important;
+    }
+}

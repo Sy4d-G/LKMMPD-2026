@@ -541,3 +541,46 @@ html, body {
             }
         }
 
+
+
+/* ─── Universal Section Overflow & Tablet Responsive Base ─── */
+#hero, #about, #mascot, #benefits, #guidebook, #speakers, #dokumentasi, #aftermovie, #faq {
+    overflow: hidden !important;
+    max-width: 100vw;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar-inner {
+        padding: 0 32px !important;
+    }
+    .navbar-links {
+        gap: 20px !important;
+    }
+    .navbar-links a {
+        font-size: 13px !important;
+    }
+    #about .grid.md\:grid-cols-2 {
+        gap: 24px !important;
+        padding: 0 20px !important;
+    }
+    #about .logo-3d-container {
+        width: 260px !important;
+        height: 260px !important;
+        transform: scale(0.9) !important;
+        margin: 0 auto !important;
+    }
+    #about .logo-3d-coin {
+        width: 240px !important;
+        height: 240px !important;
+    }
+    #about .floating-laptop {
+        transform: scale(0.65) !important;
+        top: -15px !important;
+        right: -25px !important;
+    }
+    #about .floating-gear {
+        transform: scale(0.55) !important;
+        bottom: -15px !important;
+        left: -25px !important;
+    }
+}

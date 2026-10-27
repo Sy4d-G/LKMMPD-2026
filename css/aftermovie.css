@@ -1,14 +1,15 @@
     /* ─── After Movie v2 — Light Theme ─── */
-.aftermovie-section {
-    padding: 20px 0 20px;
-    background: #f0f4f8;
-    position: relative;
-    overflow: hidden;
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    .aftermovie-section {
+        padding: 95px 0 50px;
+        scroll-margin-top: 80px;
+        background: #f0f4f8;
+        position: relative;
+        overflow: hidden;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
 /* Background decorations */
 .am-bg-circle {

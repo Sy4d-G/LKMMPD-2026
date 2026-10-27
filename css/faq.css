@@ -96,7 +96,9 @@
         @media (max-width: 768px) {
             #dokumentasi {
                 min-height: auto !important;
-                padding: 24px 0;
+                padding-top: 85px !important;
+                padding-bottom: 24px !important;
+                scroll-margin-top: 80px;
                 width: 100% !important;
                 max-width: 100% !important;
                 margin-left: 0 !important;

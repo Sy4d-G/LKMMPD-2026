@@ -565,3 +565,52 @@
             }
         }
 
+
+
+/* ─── Tablet Responsive (iPad, iPad Air, iPad Pro 769px - 1024px) ─── */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header.hero-mask-bottom {
+        min-height: 800px !important;
+        padding-top: 90px !important;
+        padding-bottom: 40px !important;
+        overflow: hidden !important;
+    }
+    header.hero-mask-bottom > .max-w-container-max {
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    #glass-cards-area {
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 40px auto 0 !important;
+    }
+    #glass-cards-area h1 {
+        font-size: 2.1rem !important;
+        line-height: 1.25 !important;
+    }
+    .glass-card-3d {
+        width: 145px !important;
+        padding: 10px 12px !important;
+    }
+    .glass-card-3d.gc-1 {
+        top: -60px !important;
+        left: 10px !important;
+    }
+    .glass-card-3d.gc-2 {
+        top: -70px !important;
+        left: auto !important;
+        right: 10px !important;
+    }
+    .glass-card-3d.gc-3 {
+        bottom: -60px !important;
+        left: 10px !important;
+    }
+    .glass-card-3d.gc-4 {
+        bottom: -60px !important;
+        left: auto !important;
+        right: 10px !important;
+    }
+}
